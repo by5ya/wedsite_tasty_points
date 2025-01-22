@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        {% load static %} 
+        <link href = "{% static 'css/style.css' %}" rel="stylesheet" type="text/css">
+        <meta http-equiv="Content-Type"
+        content="=text/html; charset = utf-8">
+        <title>
+            Гид по вкусным точкам России
+        </title>
+    </head>
+    <body>
+        <div id = "content">
+            <header>
+                <div id = "logo">
+                    <img src="{% static 'img/logo.png' %}" alt="Логотип">
+                </div>
+                <div id = "name">
+                    <h1>Путешествуй со вкусом!</h1>
+                </div>
+            </header>
+            <nav>
+                <a href = "{% url 'home' %}">
+                    Главная страница
+                </a>
+                <a href="{% url 'point' %}">
+                    Вкусные точки
+                </a>
+                <a href = "{% url 'contacts' %}">
+                    О нас
+                </a>
+            </nav>
+            <div id = "main">
+                <p>
+                    Напишите нам на номер : +7 999 999 99 99<br> или оставьте заявку
+                </p>
+                <form method="get" action="#">
+                    <table id = "form">
+                        <tr>
+                            <td>Введите свое имя</td>
+                            <td><input name = "name"></td>
+                        </tr>
+                        <tr>
+                            <td>Введите ваш номер телефона</td>
+                            <td><input name = "tel"></td>
+                        </tr>
+                        <tr>
+                            <td>Укажите причину обращения</td>
+                            <td>
+                                <textarea name "text" rows = "3">
+                                </textarea>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td colspan = 2>
+                                <input name = "send" type = "submit" value="Отправить">
+                            </td>
+                        </tr>
+                    </table>
+                </form>
+            </div>
+            <footer>
+                Свяжитесь с нами!
+            </footer>
+        </div>
+    </body>
+</html>

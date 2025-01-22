@@ -1,0 +1,75 @@
+div#content{
+    width: 100%;
+    border: thin;
+    margin: auto;
+}
+header{
+    padding: 10px 20px;
+    background-color: white;
+    display: flex;
+    justify-content: space-between;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+footer{
+    padding: 1em;
+    color: white;
+    background-color: #ffa500;
+    clear: left;
+    text-align: center;
+    border-radius: 4px;
+
+}
+nav ul {
+    list-style: none;
+    display: flex;
+    margin: 0;
+    padding: 0;
+}
+nav ul li {
+    margin: 0 15px;
+}
+
+nav ul li a {
+    text-decoration: none;
+    color: #333333;
+    font-weight: 500;
+}
+nav ul li a:hover {
+    color: #0073e6;
+}
+nav {
+    height: 20px;
+    border: solid #333;
+    padding: 1em;
+    text-align: center;
+    border-radius: 4px;
+}
+nav a {
+    text-decoration: none;
+    padding: 2em;
+}
+#main{
+    padding: 1em;
+}
+div #logo img{
+    width: 80px;
+    height: 80px;
+    float: left;
+}
+
+table#form{
+    width: 80%;
+    margin: auto;
+}
+table#form td{
+    text-align: center;
+}
+table#points{
+    width: 80%;
+    margin: auto;
+}
+table#points td{
+    text-align: center;
+    border: 3px solid #333;
+    border-radius: 5px;
+}

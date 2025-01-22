@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        {% load static %} 
+        <link href = "{% static 'css/style.css' %}" rel="stylesheet" type="text/css">
+        <meta http-equiv="Content-Type"
+        content="=text/html; charset = utf-8">
+        <title>
+            Гид по вкусным точкам России
+        </title>
+    </head>
+    <body>
+        <div id = "content">
+            <header>
+                <div id = "name">
+                    <h1>Путешествуй со вкусом!</h1>
+                </div>
+                <nav>
+                    <ul>
+                        <li><a href = "{% url 'home' %}">Главная страница</a></li>
+                        <li><a href="{% url 'point' %}">Вкусные точки</a></li>
+                        <li><a href = "{% url 'contacts' %}">О нас</a></li>
+                    </ul> 
+                </nav>
+                <div class="actions">
+                    <a href="#" class="login">Войти</a>
+                    <a href="#" class="registrate">Зарегестрироваться</a>
+                </div>
+            </header>
+            
+            <div id = "main">
+                <p>
+                    Ищешь вкусное приключение? Мы знаем, где оно!
+                </p>
+                <p>
+                    Направления вкусных точек:
+                    <ul>
+                        <li>Рестораны</li>
+                        <li>Кафе</li>
+                        <li>Бары</li>
+                        <li>Закусочные</li>
+                        <li>Кофейни</li>
+                    </ul>
+                </p>
+                <p>
+                    Акции и скидки
+                </p>
+            </div>
+            <footer>
+                Свяжитесь с нами!
+            </footer>
+        </div>
+    </body>
+</html>
