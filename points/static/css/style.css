@@ -1,4 +1,14 @@
+
+:root {
+    --brown:#a52a2a;
+    --orange: #ffa500;
+  }
+
+body{
+    margin: 0px;
+}
 div#content{
+    clear: both;
     width: 100%;
     border: thin;
     margin: auto;
@@ -8,6 +18,7 @@ header{
     background-color: white;
     display: flex;
     justify-content: space-between;
+    align-items: center;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 footer{
@@ -16,7 +27,7 @@ footer{
     background-color: #ffa500;
     clear: left;
     text-align: center;
-    border-radius: 4px;
+    margin: 0px;
 
 }
 nav ul {
@@ -24,37 +35,98 @@ nav ul {
     display: flex;
     margin: 0;
     padding: 0;
+
 }
 nav ul li {
-    margin: 0 15px;
+    margin: 0 5px;
 }
 
 nav ul li a {
-    text-decoration: none;
-    color: #333333;
-    font-weight: 500;
+    font-family: 'Sofia Sans';
+    font-size: 130%;
+    color: orange;
+    font-weight: 400;
+    
 }
 nav ul li a:hover {
-    color: #0073e6;
+    color: #e6d300;
 }
 nav {
     height: 20px;
-    border: solid #333;
-    padding: 1em;
+    padding: 10px;
     text-align: center;
-    border-radius: 4px;
 }
 nav a {
     text-decoration: none;
     padding: 2em;
 }
-#main{
-    padding: 1em;
+.points{
+    
+    border: #fec967 solid 5px;
+    border-radius: 20px;
+    height: 70%;
+    width: 40%;
+
 }
+.auth{
+    color: white;
+    font-family: 'Sofia Sans';
+    font-size: 22px;
+    text-decoration: none;
+}
+div#actions{
+    display: flex;
+    justify-content: space-between;
+}
+button{
+    padding: 0.5em;
+    margin: 10px;
+    background-color: orange;
+    border-radius: 8px;
+    border: orange;
+}
+
 div #logo img{
     width: 80px;
     height: 80px;
     float: left;
+}
+
+#start {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+div #startimg img{
+    width: auto;
+    height: 700px;
+    margin-top: 30px;
+    margin-right: 0px;
+}
+div #starttext{
+    margin: 5%;
+}
+div #npt{
+    height: 30%;
+    width: 40%;
+    border: orange 4px solid;
+    border-radius: 20px;
+    margin: 40px auto;
+    background-color: orange;
+}
+
+#strtt {
+    font-family: 'Sofia Sans';
+    font-size: 42px;
+    color: brown;
+    font-weight: 400;
+}
+#nav-points-text{
+    text-align: center;
+    font-family: 'Sofia Sans';
+    color:#ffffff;
+    font-size: 140%;
 }
 
 table#form{
@@ -72,4 +144,15 @@ table#points td{
     text-align: center;
     border: 3px solid #333;
     border-radius: 5px;
+}
+h1{
+    font-family: 'Sofia Sans';
+    color:#a52a2a;
+    font-size: 190%;
+}
+
+p{
+    font-family: 'Sofia Sans';
+    color:#a52a2a;
+    font-size: 140%;
 }

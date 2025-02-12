@@ -3,6 +3,9 @@
     <head>
         {% load static %} 
         <link href = "{% static 'css/style.css' %}" rel="stylesheet" type="text/css">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Sofia+Sans:ital,wght@0,1..1000;1,1..1000&display=swap" rel="stylesheet">   
         <meta http-equiv="Content-Type"
         content="=text/html; charset = utf-8">
         <title>
@@ -12,52 +15,50 @@
     <body>
         <div id = "content">
             <header>
-                <div id = "logo">
-                    <img src="{% static 'img/logo.png' %}" alt="Логотип">
-                </div>
                 <div id = "name">
-                    <h1>Путешествуй со вкусом!</h1>
+                    <h1 >Путешествуй со вкусом!</h1>
+                </div>
+                <nav>
+                    <ul>
+                        <li><a href = "{% url 'home' %}"><span class="tooltip">Главная страница</span></a></li>
+                        <li><a href="{% url 'point' %}"><span class="tooltip"></span>Вкусные точки</span></a></li>
+                        <li><a href = "{% url 'contacts' %}"><span class="tooltip"></span>О нас</span></a></li>
+                    </ul> 
+                </nav>
+                <div class="actions">
+                    <button>Войти</button>
+                    <button>Регистрация</button>
                 </div>
             </header>
-            <nav>
-                <a href = "{% url 'home' %}">
-                    Главная страница
-                </a>
-                <a href="{% url 'point' %}">
-                    Вкусные точки
-                </a>
-                <a href = "{% url 'contacts' %}">
-                    О нас
-                </a>
-            </nav>
-            <div id = "main">
-                <table id = "points">
-                    <tr>
-                        <td rowspan="2">Москва</td>
-                        <td>Ресторан "The Бык"</td>
-                    </tr>
-                    <tr>
-                        <td>Ресторан "Хачапури и Вино"</td>
-                    </tr>
-                    <tr>
-                        <td rowspan="2">Санкт-Петербург</td>
-                        <td>Ресторан "Голландские традиции"</td>
-                    </tr>
-                    <tr>
-                        <td>Котокафе</td>
-                    </tr>
-                    <tr>
-                        <td rowspan="2">Воронеж</td>
-                        <td>Кофейня "Шоколадница"</td>
-                    </tr>
-                    <tr>
-                        <td>Бар 25/8</td>
-                    </tr>
-                </table>
-            </div>
-            <footer>
-                Свяжитесь с нами!
-            </footer>
         </div>
+
+        <div id = "main">
+            <table id = "points">
+                <tr>
+                    <td rowspan="2">Москва</td>
+                    <td>Ресторан "The Бык"</td>
+                </tr>
+                <tr>
+                    <td>Ресторан "Хачапури и Вино"</td>
+                </tr>
+                <tr>
+                    <td rowspan="2">Санкт-Петербург</td>
+                    <td>Ресторан "Голландские традиции"</td>
+                </tr>
+                <tr>
+                    <td>Котокафе</td>
+                </tr>
+                <tr>
+                    <td rowspan="2">Воронеж</td>
+                    <td>Кофейня "Шоколадница"</td>
+                </tr>
+                <tr>
+                    <td>Бар 25/8</td>
+                </tr>
+            </table>
+        </div>
+        <footer>
+            Свяжитесь с нами!
+        </footer>
     </body>
 </html>

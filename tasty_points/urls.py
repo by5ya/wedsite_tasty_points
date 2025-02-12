@@ -17,11 +17,16 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 
-from points.views import home_page, point_page, contact_page
+from points.views import home_page, point_page, contact_page, registration_page, login_page
+from points import views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', home_page, name="home"),
     path('points/', point_page, name="point"),
     path('contacts/', contact_page, name="contacts"),
+    path('register/', views.register, name='register'),  # Важно, чтобы этот URL был правильным
+    path('login/', views.user_login, name='login'),
+    #path('registration_page/', registration_page, name="registration"),
+    #path('log-in/', login_page, name="login"),
 ]

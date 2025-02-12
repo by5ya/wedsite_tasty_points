@@ -3,6 +3,9 @@
     <head>
         {% load static %} 
         <link href = "{% static 'css/style.css' %}" rel="stylesheet" type="text/css">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Sofia+Sans:ital,wght@0,1..1000;1,1..1000&display=swap" rel="stylesheet">   
         <meta http-equiv="Content-Type"
         content="=text/html; charset = utf-8">
         <title>
@@ -13,33 +16,43 @@
         <div id = "content">
             <header>
                 <div id = "name">
-                    <h1>Путешествуй со вкусом!</h1>
+                    <h1 >Путешествуй со вкусом!</h1>
                 </div>
                 <nav>
                     <ul>
-                        <li><a href = "{% url 'home' %}">Главная страница</a></li>
-                        <li><a href="{% url 'point' %}">Вкусные точки</a></li>
-                        <li><a href = "{% url 'contacts' %}">О нас</a></li>
+                        <li><a href = "{% url 'home' %}"><span class="tooltip"><b>Главная страница</b></span></a></li>
+                        <li><a href="{% url 'point' %}"><span class="tooltip"><b>Вкусные точки</b></span></a></li>
+                        <li><a href = "{% url 'contacts' %}"><span class="tooltip"><b>О нас</b></span></a></li>
                     </ul> 
                 </nav>
                 <div class="actions">
-                    <a href="#" class="login">Войти</a>
-                    <a href="#" class="registrate">Зарегестрироваться</a>
+                    <button><a href="{% url 'login' %}" class="auth">Войти</a></button>
+                    <button><a href="{% url 'register' %}" class="auth">Регистрация</a></button>
                 </div>
             </header>
+        </div>
             
-            <div id = "main">
+        <div id = "main">
+            <div id="start">
+                <div id="startimg">
+                    <img src="{% static 'img/start-img.png' %}" alt="Баннер">
+                </div>
+                <div id="starttext">
+                    <p id="strtt"><b>Ищешь вкусное приключение? Мы знаем, где оно!</b></p>
+                    <p>Можете ознакомиться с доступными проверенными точками и выбрать свое любимое место в любой точке мира.<br>Наш умный поиск предложит Вам похожие места.<br>Получите незабываемый опыт гастрономического путешествия</p>
+                </div>
+            </div>
+            <div id="content">
                 <p>
-                    Ищешь вкусное приключение? Мы знаем, где оно!
-                </p>
-                <p>
-                    Направления вкусных точек:
+                    <div id="npt">
+                        <p id="nav-points-text"><b>Направления вкусных точек:</b></p>
+                    </div>
                     <ul>
-                        <li>Рестораны</li>
-                        <li>Кафе</li>
-                        <li>Бары</li>
-                        <li>Закусочные</li>
-                        <li>Кофейни</li>
+                        <li class="points">Рестораны</li>
+                        <li class="points">Кафе</li>
+                        <li class="points">Бары</li>
+                        <li class="points">Закусочные</li>
+                        <li class="points">Кофейни</li>
                     </ul>
                 </p>
                 <p>
@@ -49,6 +62,6 @@
             <footer>
                 Свяжитесь с нами!
             </footer>
-        </div>
+            </div>
     </body>
 </html>

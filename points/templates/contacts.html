@@ -3,6 +3,9 @@
     <head>
         {% load static %} 
         <link href = "{% static 'css/style.css' %}" rel="stylesheet" type="text/css">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Sofia+Sans:ital,wght@0,1..1000;1,1..1000&display=swap" rel="stylesheet">   
         <meta http-equiv="Content-Type"
         content="=text/html; charset = utf-8">
         <title>
@@ -12,56 +15,53 @@
     <body>
         <div id = "content">
             <header>
-                <div id = "logo">
-                    <img src="{% static 'img/logo.png' %}" alt="Логотип">
-                </div>
                 <div id = "name">
-                    <h1>Путешествуй со вкусом!</h1>
+                    <h1 >Путешествуй со вкусом!</h1>
+                </div>
+                <nav>
+                    <ul>
+                        <li><a href = "{% url 'home' %}"><span class="tooltip">Главная страница</span></a></li>
+                        <li><a href="{% url 'point' %}"><span class="tooltip"></span>Вкусные точки</span></a></li>
+                        <li><a href = "{% url 'contacts' %}"><span class="tooltip"></span>О нас</span></a></li>
+                    </ul> 
+                </nav>
+                <div class="actions">
+                    <button>Войти</button>
+                    <button>Регистрация</button>
                 </div>
             </header>
-            <nav>
-                <a href = "{% url 'home' %}">
-                    Главная страница
-                </a>
-                <a href="{% url 'point' %}">
-                    Вкусные точки
-                </a>
-                <a href = "{% url 'contacts' %}">
-                    О нас
-                </a>
-            </nav>
-            <div id = "main">
-                <p>
-                    Напишите нам на номер : +7 999 999 99 99<br> или оставьте заявку
-                </p>
-                <form method="get" action="#">
-                    <table id = "form">
-                        <tr>
-                            <td>Введите свое имя</td>
-                            <td><input name = "name"></td>
-                        </tr>
-                        <tr>
-                            <td>Введите ваш номер телефона</td>
-                            <td><input name = "tel"></td>
-                        </tr>
-                        <tr>
-                            <td>Укажите причину обращения</td>
-                            <td>
-                                <textarea name "text" rows = "3">
-                                </textarea>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td colspan = 2>
-                                <input name = "send" type = "submit" value="Отправить">
-                            </td>
-                        </tr>
-                    </table>
-                </form>
-            </div>
-            <footer>
-                Свяжитесь с нами!
-            </footer>
         </div>
+        <div id = "main">
+            <p>
+                Напишите нам на номер : +7 999 999 99 99<br> или оставьте заявку
+            </p>
+            <form method="get" action="#">
+                <table id = "form">
+                    <tr>
+                        <td>Введите свое имя</td>
+                        <td><input name = "name"></td>
+                    </tr>
+                    <tr>
+                        <td>Введите ваш номер телефона</td>
+                        <td><input name = "tel"></td>
+                    </tr>
+                    <tr>
+                        <td>Укажите причину обращения</td>
+                        <td>
+                            <textarea name "text" rows = "3">
+                            </textarea>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td colspan = 2>
+                            <input name = "send" type = "submit" value="Отправить">
+                        </td>
+                    </tr>
+                </table>
+            </form>
+        </div>
+        <footer>
+            Свяжитесь с нами!
+        </footer>
     </body>
 </html>
