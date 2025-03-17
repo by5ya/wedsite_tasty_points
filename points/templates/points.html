@@ -8,6 +8,7 @@
         <link href="https://fonts.googleapis.com/css2?family=Sofia+Sans:ital,wght@0,1..1000;1,1..1000&display=swap" rel="stylesheet">   
         <meta http-equiv="Content-Type"
         content="=text/html; charset = utf-8">
+        <meta name="csrf-token" content="{{ csrf_token }}">
         <title>
             Гид по вкусным точкам России
         </title>
@@ -26,39 +27,84 @@
                     </ul> 
                 </nav>
                 <div class="actions">
-                    <button>Войти</button>
-                    <button>Регистрация</button>
+                    {% if user.is_authenticated %}
+                        <!-- Если пользователь авторизован, показываем кнопку "Выйти" -->
+                        <form action="{% url 'logout' %}" method="post" style="display: inline;">
+                            {% csrf_token %}
+                            <button type="submit" class="auth">Выйти</button>
+                        </form>
+                    {% else %}
+                        <!-- Если пользователь не авторизован, показываем кнопки "Войти" и "Регистрация" -->
+                        <button><a href="{% url 'login' %}" class="auth">Войти</a></button>
+                        <button><a href="{% url 'register' %}" class="auth">Регистрация</a></button>
+                    {% endif %}
                 </div>
             </header>
         </div>
 
         <div id = "main">
-            <table id = "points">
-                <tr>
-                    <td rowspan="2">Москва</td>
-                    <td>Ресторан "The Бык"</td>
-                </tr>
-                <tr>
-                    <td>Ресторан "Хачапури и Вино"</td>
-                </tr>
-                <tr>
-                    <td rowspan="2">Санкт-Петербург</td>
-                    <td>Ресторан "Голландские традиции"</td>
-                </tr>
-                <tr>
-                    <td>Котокафе</td>
-                </tr>
-                <tr>
-                    <td rowspan="2">Воронеж</td>
-                    <td>Кофейня "Шоколадница"</td>
-                </tr>
-                <tr>
-                    <td>Бар 25/8</td>
-                </tr>
-            </table>
+            <form method="GET">
+        
+                <label for="city">Город:</label>
+                <select name="city" id="city">
+                    <option value=""></option>
+                    {% for city in cities %}
+                        <option value="{{ city.id }}">{{ city.city }}</option>
+                    {% endfor %}
+                </select>
+        
+                <label for="type">Тип ресторана:</label>
+                <select name="type" id="type">
+                    <option value=""></option>
+                    {% for type in types %}
+                        <option value="{{ type.id }}">{{ type.name }}</option>
+                    {% endfor %}
+                </select>
+        
+                <button type="submit">Применить</button>
+            </form>
+        
+            <ul>
+                {% for point in points %}
+                    <li class="tp">
+                        <div class="point-container">
+                            {% if point.image %}
+                            <img src="{% static point.image.url %}" alt="{{ point.name }}" class="point-image">
+                            {% endif %}
+                            <div class="point-details">
+                                <h3 class="point-name">{{ point.name }}</h3>
+                                <p class="point-description">{{ point.description }}</p>
+                                <p class="point-location">Город: {{ point.city.city }} - Тип: {{ point.type_p.name }}</p>
+                                
+                                <!-- Ваш HTML-код с кнопками лайков -->
+                                <div class="like-section">
+                                    {% if request.user.is_authenticated %}
+                                        <a href="#" class="like-button" data-point-id="{{ point.id }}">
+                                            {% if point.id in liked_points %}
+                                                ❤️ <!-- Красное сердечко, если пользователь уже лайкнул -->
+                                            {% else %}
+                                                🤍 <!-- Белое сердечко, если пользователь ещё не лайкнул -->
+                                            {% endif %}
+                                        </a>
+                                    {% else %}
+                                        <a href="{% url 'login' %}?next={{ request.path }}" class="like-button">
+                                            🤍 <!-- Белое сердечко, если пользователь не авторизован -->
+                                        </a>
+                                    {% endif %}
+                                </div>
+
+                                <!-- Вставьте JavaScript-код здесь -->
+                                <script src="{% static 'js/like.js' %}"></script>
+                            </div>
+                        </div>
+                    </li>
+                {% empty %}
+                    <li>Нет доступных точек.</li>
+                {% endfor %}
+            </ul>
         </div>
         <footer>
-            Свяжитесь с нами!
+            <a href="{% url 'contacts' %}">Свяжитесь с нами!</a>
         </footer>
     </body>
 </html>

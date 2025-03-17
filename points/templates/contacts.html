@@ -26,8 +26,17 @@
                     </ul> 
                 </nav>
                 <div class="actions">
-                    <button>Войти</button>
-                    <button>Регистрация</button>
+                    {% if user.is_authenticated %}
+                        <!-- Если пользователь авторизован, показываем кнопку "Выйти" -->
+                        <form action="{% url 'logout' %}" method="post" style="display: inline;">
+                            {% csrf_token %}
+                            <button type="submit" class="auth">Выйти</button>
+                        </form>
+                    {% else %}
+                        <!-- Если пользователь не авторизован, показываем кнопки "Войти" и "Регистрация" -->
+                        <button><a href="{% url 'login' %}" class="auth">Войти</a></button>
+                        <button><a href="{% url 'register' %}" class="auth">Регистрация</a></button>
+                    {% endif %}
                 </div>
             </header>
         </div>

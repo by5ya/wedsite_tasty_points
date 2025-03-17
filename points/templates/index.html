@@ -26,8 +26,17 @@
                     </ul> 
                 </nav>
                 <div class="actions">
-                    <button><a href="{% url 'login' %}" class="auth">Войти</a></button>
-                    <button><a href="{% url 'register' %}" class="auth">Регистрация</a></button>
+                    {% if user.is_authenticated %}
+                        <!-- Если пользователь авторизован, показываем кнопку "Выйти" -->
+                        <form action="{% url 'logout' %}" method="post" style="display: inline;">
+                            {% csrf_token %}
+                            <button type="submit" class="auth">Выйти</button>
+                        </form>
+                    {% else %}
+                        <!-- Если пользователь не авторизован, показываем кнопки "Войти" и "Регистрация" -->
+                        <button><a href="{% url 'login' %}" class="auth">Войти</a></button>
+                        <button><a href="{% url 'register' %}" class="auth">Регистрация</a></button>
+                    {% endif %}
                 </div>
             </header>
         </div>
@@ -47,20 +56,32 @@
                     <div id="npt">
                         <p id="nav-points-text"><b>Направления вкусных точек:</b></p>
                     </div>
-                    <ul>
-                        <li class="points">Рестораны</li>
-                        <li class="points">Кафе</li>
-                        <li class="points">Бары</li>
-                        <li class="points">Закусочные</li>
-                        <li class="points">Кофейни</li>
+                    <ul class="custom-list">
+                        <li class="points" style="background-image: url('static/img/restaurant.jpg');">
+                            <span>Рестораны</span>
+                            <span class="hover-text">Ищете изысканный вечер с безупречным сервисом и восхитительными блюдами? Наши рестораны предлагают широкий выбор кухонь мира, от традиционной русской до экзотических азиатских деликатесов. </span>
+                        </li>
+                        <li class="points" style="background-image: url('static/img/cafe.jpg');">
+                            <span>Кафе</span>
+                            <span class="hover-text">Кафе – идеальное место для встречи с друзьями, неторопливого обеда или просто чашечки ароматного кофе. Уютная атмосфера, разнообразие легких блюд, десертов и напитков делают наши кафе прекрасным выбором для любого времени дня. </span>
+                        </li>
+                        <li class="points" style="background-image: url('static/img/bar.jpg');">
+                            <span>Бары</span>
+                            <span class="hover-text">Наши бары – это место, где можно отдохнуть после рабочего дня, провести вечер в компании друзей или насладиться живой музыкой. Широкий выбор алкогольных и безалкогольных напитков, авторские коктейли и закуски на любой вкус сделают ваш вечер незабываемым.</span>
+                        </li>
+                        <li class="points" style="background-image: url('static/img/snack.jpg');">
+                            <span>Закусочные</span>
+                            <span class="hover-text">Если вы ищете быстрый и вкусный перекус, наши закусочные – это то, что вам нужно. Разнообразие сэндвичей, бургеров, пиццы и других популярных блюд, приготовленных из свежих ингредиентов, позволит вам быстро подкрепиться и продолжить свои дела.</span>
+                        </li>
+                        <li class="points" style="background-image: url('static/img/coffee.jpg');">
+                            <span>Кофейни</span>
+                            <span class="hover-text">Для настоящих ценителей кофе наши кофейни предлагают широкий выбор ароматных напитков, от классического эспрессо до авторских кофейных коктейлей. Насладитесь утренней чашкой кофе, поднимите себе настроение в середине дня или просто отдохните в уютной обстановке. </span>
+                        </li>
                     </ul>
-                </p>
-                <p>
-                    Акции и скидки
                 </p>
             </div>
             <footer>
-                Свяжитесь с нами!
+                <a href="{% url 'contacts' %}">Свяжитесь с нами!</a>
             </footer>
             </div>
     </body>

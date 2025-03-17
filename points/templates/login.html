@@ -1,15 +1,17 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
+    {% load static %} 
+    <link href = "{% static 'css/style.css' %}" rel="stylesheet" type="text/css">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Авторизация</title>
 </head>
 <body>
     <p>Авторизация</p>
     <form method="post">
-        {% csrf_token %}  <!-- CSRF-токен -->
-        {{ form.as_p }}   <!-- Форма в виде абзацев -->
+        {% csrf_token %} 
+        {{ form.as_p }} 
         <button type="submit">Войти</button>
     </form>
 </body>
