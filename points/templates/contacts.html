@@ -2,7 +2,7 @@
 <html>
     <head>
         {% load static %} 
-        <link href = "{% static 'css/style.css' %}" rel="stylesheet" type="text/css">
+        <link href="{% static 'css/style.css' %}" rel="stylesheet" type="text/css">
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
         <link href="https://fonts.googleapis.com/css2?family=Sofia+Sans:ital,wght@0,1..1000;1,1..1000&display=swap" rel="stylesheet">   
@@ -41,36 +41,26 @@
             </header>
         </div>
         <div id = "main">
-            <p>
-                Напишите нам на номер : +7 999 999 99 99<br> или оставьте заявку
-            </p>
-            <form method="get" action="#">
-                <table id = "form">
-                    <tr>
-                        <td>Введите свое имя</td>
-                        <td><input name = "name"></td>
-                    </tr>
-                    <tr>
-                        <td>Введите ваш номер телефона</td>
-                        <td><input name = "tel"></td>
-                    </tr>
-                    <tr>
-                        <td>Укажите причину обращения</td>
-                        <td>
-                            <textarea name "text" rows = "3">
-                            </textarea>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td colspan = 2>
-                            <input name = "send" type = "submit" value="Отправить">
-                        </td>
-                    </tr>
-                </table>
-            </form>
+            <div class="contact-container">
+                <form method="post">
+                    {% csrf_token %}
+                    {% for field in form %}
+                      <div class="form-field"> <!-- Новый контейнер для каждого поля -->
+                        {{ field.label_tag }}
+                        {{ field }}
+                        {% if field.errors %}
+                          <div class="error-message">{{ field.errors }}</div>
+                        {% endif %}
+                      </div>
+                    {% endfor %}
+                    <div class="button-container">
+                        <button type="submit">Отправить</button>
+                    </div>
+                </form>
+            </div>
         </div>
-        <footer>
-            Свяжитесь с нами!
-        </footer>
+    <footer>
+        <a href="{% url 'contacts' %}">Свяжитесь с нами!</a>
+    </footer>
     </body>
 </html>

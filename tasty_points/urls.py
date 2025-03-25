@@ -18,14 +18,14 @@ from django.contrib import admin
 from django.urls import path
 from django.contrib.auth.views import LogoutView
 
-from points.views import home_page, get_points, contact_page, registration_page, login_page
+from points.views import home_page, get_points, contact_view, registration_page, login_page
 from points import views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', home_page, name="home"),
     path('points/', get_points, name="point"),
-    path('contacts/', contact_page, name="contacts"),
+    path('contacts/', contact_view, name="contacts"),
     path('register/', views.register, name='register'),  # Важно, чтобы этот URL был правильным
     path('login/', views.user_login, name='login'),
     path('like_point/<int:point_id>/', views.like_point, name='like_point'),

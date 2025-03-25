@@ -2,17 +2,33 @@
 <html lang="ru">
 <head>
     {% load static %} 
-    <link href = "{% static 'css/style.css' %}" rel="stylesheet" type="text/css">
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="{% static 'css/style.css' %}" rel="stylesheet" type="text/css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Sofia+Sans:ital,wght@0,1..1000;1,1..1000&display=swap" rel="stylesheet">   
+    <meta http-equiv="Content-Type"
+    content="=text/html; charset = utf-8">
     <title>Авторизация</title>
 </head>
 <body>
-    <p>Авторизация</p>
-    <form method="post">
-        {% csrf_token %} 
-        {{ form.as_p }} 
-        <button type="submit">Войти</button>
-    </form>
+    <div class="auth-container">
+        <h1>Авторизация</h1>
+        <form method="post">
+          {% csrf_token %}
+          {% for field in form %}
+            <div class="form-field"> <!-- Новый контейнер для каждого поля -->
+              {{ field.label_tag }}
+              {{ field }}
+              {% if field.errors %}
+                <div class="error-message">{{ field.errors }}</div>
+              {% endif %}
+            </div>
+          {% endfor %}
+          <button type="submit">Войти</button>
+        </form>
+      </div>
+    <footer>
+        <a href="{% url 'contacts' %}">Свяжитесь с нами!</a>
+    </footer>
 </body>
 </html>

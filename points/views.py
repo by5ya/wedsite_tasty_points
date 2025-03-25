@@ -2,13 +2,14 @@
 from django.shortcuts import render, redirect
 
 from django.contrib.auth import login, authenticate
-from .forms import RegisterForm, LoginForm
+from .forms import RegisterForm, LoginForm, ContactForm
 from .models import CityOfPoint, Point, TypeOfPoint
 from django.http import JsonResponse
 from django.contrib.auth.decorators import login_required
 from django.views.decorators.http import require_POST
 from .models import Like, Point
 from django.core.exceptions import ObjectDoesNotExist
+from django.core.mail import send_mail
 
 from django.views.decorators.csrf import csrf_exempt
 
@@ -110,3 +111,19 @@ def like_point(request, point_id):
         return JsonResponse({'error': 'An error occurred'}, status=500)
 
     return JsonResponse({'liked': liked})
+
+def contact_view(request):
+    if request.method == 'POST':
+        form = ContactForm(request.POST)
+        if form.is_valid():
+            name = form.cleaned_data['name']
+            tel = form.cleaned_data['tel']
+            text = form.cleaned_data['text']
+            subject = f'Новое сообщение от {name}'
+            message = f'Имя: {name}\nТелефон: {tel}\nСообщение: {text}'
+            send_mail(subject, message, 'tigriska2006@mail.ru', ['tigriska2006@mail.ru'])  # Замените на ваш email
+            return render(request, 'contacts.html', {'form': ContactForm()})  # Страница успеха
+    else:
+        form = ContactForm()
+    
+    return render(request, 'contacts.html', {'form': form})
